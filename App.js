@@ -57,6 +57,24 @@ export default function App() {
                             </Pressable>
                         )
                     }} />
+                <Stack.Screen
+                    name="DestinationDetail"
+                    component={DestinationDetail}
+                    options={{
+                        headerShown: false,
+                        title: null,
+                        headerStyle: {
+                            backgroundColor: null,
+                            shadowColor: 'transparent'
+                        },
+                        headerRight: () => (
+                            <Pressable
+                                style={styles.menu}
+                                onPress={() => console.log('menu press')}>
+                                <Entypo name="dots-three-vertical" size={22} color="black" />
+                            </Pressable>
+                        )
+                    }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

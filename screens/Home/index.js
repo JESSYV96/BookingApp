@@ -2,9 +2,11 @@ import React from 'react'
 import styles from './styles'
 import { Text, View, Image, FlatList } from 'react-native'
 import { Ionicons, MaterialIcons, FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
 import { COLORS, images } from '../../constants/index'
 import OptionItem from '../../components/optionsItem'
 import DestinationItem from '../../components/destinationItem'
+import destinationData from '../../data/destinations'
 
 const optionsData = [
     {
@@ -57,30 +59,10 @@ const optionsData = [
     },
 ]
 
-const destinationData = [
-    {
-        id: '1',
-        image: images.skiVilla,
-        title: 'Ski Villa'
-    },
-    {
-        id: '2',
-        image: images.climbingHills,
-        title: 'Climbing Hills'
-    },
-    {
-        id: '3',
-        image: images.frozenHills,
-        title: 'Frozen Hills'
-    },
-    {
-        id: '4',
-        image: images.beach,
-        title: 'Beach'
-    },
-]
 
 const Home = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={styles.imageContainer}>
@@ -110,12 +92,12 @@ const Home = () => {
                     data={destinationData}
                     renderItem={itemData => (
                         <DestinationItem
+                            onPress={() => navigation.navigate('DestinationDetail', { destinationId: itemData.item.id })}
                             key={itemData.item.id}
                             title={itemData.item.title}
                             image={itemData.item.image} />
                     )}
                 />
-
             </View>
         </View>
     )

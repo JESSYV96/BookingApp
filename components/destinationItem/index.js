@@ -1,13 +1,15 @@
 import React from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity} from 'react-native'
 import styles from './styles';
 
-const DestinationItem = ({ image, title }) => {
+const DestinationItem = ({ image, title, onPress }) => {
     return (
-        <View style={styles.container}>
-            <Image style={styles.image} source={image} />
-            <Text style={styles.destinationTitle}>{title}</Text>
-        </View>
+        <TouchableOpacity onPress={onPress}>
+            <View style={styles.container}>
+                <Image style={styles.image} source={image} />
+                <Text style={styles.destinationTitle}>{title}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 
